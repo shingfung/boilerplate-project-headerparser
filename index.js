@@ -26,8 +26,8 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/whoami", function (req, res) {
-  console.log(req.headers);
-  const ipadress = req.rawHeaders[1];
+  console.log(req.headers['x-forwaded-for']);
+  const ipadress = req.headers['x-forwaded-for'];
   const language = req.headers['accept-language'];
   const software = req.headers['user-agent'];
   res.json({ipadress, language, software});
